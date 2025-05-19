@@ -1,8 +1,8 @@
 from kedro.pipeline import Pipeline, node, pipeline
 from .nodes import (
-    tune_xgboost_for_each_target,    # renamed function for tuning per target
-    train_individual_models,         # renamed function for training per target
-    predict_with_individual_models,  # renamed function for prediction per target
+    tune_xgboost_for_each_target,   
+    train_individual_models, 
+    predict_with_individual_models,
     inverse_transform_predictions,
     evaluate_multitarget_regression,
     clean_y_test_for_evaluation
@@ -11,19 +11,19 @@ from .nodes import (
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
-            func=tune_xgboost_for_each_target,        # tuning per target
+            func=tune_xgboost_for_each_target,
             inputs=["X_train_pca", "y_train_scaled", "params:n_trials"],
             outputs="xgb_best_params_per_target",
             name="optuna_hyperparameter_tuning_per_target"
         ),
         node(
-            func=train_individual_models,              # train separate models per target
+            func=train_individual_models,
             inputs=["X_train_pca", "y_train_scaled", "xgb_best_params_per_target"],
             outputs="xgb_models_dict",
             name="train_individual_xgboost_models"
         ),
         node(
-            func=predict_with_individual_models,       # predict using separate models
+            func=predict_with_individual_models,
             inputs=["xgb_models_dict", "X_test_pca"],
             outputs="y_test_pred_scaled",
             name="predict_with_individual_models"
