@@ -4,30 +4,6 @@ import numpy as np
 from scipy.signal import savgol_filter
 from sklearn.ensemble import IsolationForest
 from sklearn.model_selection import train_test_split
-
-# Explanation of what the function does:
-# Input: A DataFrame with measurements of fruit firmness from multiple experiments, where each fruit can have 1 or 2 measurements at the same "moment" (identified by Experiment, TestDate, Fruit nr, and Size Weight).
-
-# Grouping: The function groups the data by these identifiers to isolate measurements taken at the same time for the same fruit.
-
-# For groups with exactly 2 measurements:
-
-# It calculates the relative difference between the two firmness values.
-
-# If the relative difference is below the threshold (default 20%), it averages the two values and flags the group as not an outlier (outlier_flag=False).
-
-# If the relative difference is above the threshold, it still averages but flags the group as a potential outlier (outlier_flag=True).
-
-# For groups with other than 2 measurements (e.g., 1 or more than 2):
-
-# It averages the available values.
-
-# Since this situation is unexpected (you expect exactly two measurements), it flags these groups as outliers by default (outlier_flag=True).
-
-# Output: A cleaned DataFrame where each group is represented by one row with averaged firmness, plus a boolean column indicating if this group is a potential outlier.
-
-
-import pandas as pd
 import logging
 
 logger = logging.getLogger(__name__)
