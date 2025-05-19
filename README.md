@@ -118,6 +118,14 @@ Run the Full Pipeline:
 kedro run
 ```
 
+Run each pipeline separately:
+
+```
+kedro run --pipeline=data_processing
+kedro run --pipeline=data_science
+kedro run --pipeline=machine_learning
+```
+
 Visualize DAG:
 
 ```
