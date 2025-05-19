@@ -1,0 +1,26 @@
+target_cols:
+  - Firmness (kg)
+  - Brix
+  - TA
+
+categorical_cols:
+  - Cultivar
+
+drop_cols:
+  - TestDate
+  - Experiment
+  - Fruit nr
+  - firmness_outlier_flag
+  - source_rows
+  - iforest_outlier_flag
+  - final_outlier_flag
+  - Cultivar
+  - sensorT
+  - Size
+  - Weight
+
+pca_n_components: 0.99
+
+n_trials: 100
+
+correlation_threshold: 0.2
