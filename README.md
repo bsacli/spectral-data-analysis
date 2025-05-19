@@ -10,19 +10,28 @@ This Kedro project implements a robust machine learning pipeline to process spec
 
 ## 📂 Project Structure
 
-├── data/ # Raw, intermediate, and output datasets
-├── conf/base/ # Parameters and catalog configuration
-│ ├── parameters.yml
-│ └── catalog.yml
-├── notebooks/ # EDA
-├── src/ # Project source code
-│ ├── pipelines/
-│ │ ├── data_processing/
-│ │ ├── data_science/
-│ │ └── machine_learning/
-├── pyproject.toml
-└── README.md
-
+├── data/                       # Raw, intermediate, and model output datasets
+│   ├── 01_raw/                # Original input data (e.g., CSV from sensor)
+│   ├── 02_intermediate/       # Processed data after cleaning, denoising, outlier removal
+│   ├── 03_primary/            # Train/test splits, scaled and PCA-transformed data
+│   ├── 06_models/             # Saved models, scalers, and PCA objects
+│   └── 08_reporting/          # (Optional) Visual outputs, metrics, or plots
+│
+├── conf/
+│   └── base/
+│       ├── parameters.yml     # Project parameters (target columns, PCA settings, etc.)
+│       └── catalog.yml        # Data catalog: dataset definitions and file paths
+│
+├── notebooks/                 # Exploratory data analysis (EDA), debugging, visualizations
+│
+├── src/                       # Source code of the Kedro project
+│   └── pipelines/
+│       ├── data_processing/   # Data cleaning, denoising, outlier detection
+│       ├── data_science/      # Feature engineering, scaling, PCA
+│       └── machine_learning/  # Model tuning, training, prediction, and evaluation
+│
+├── pyproject.toml             # Project dependencies and configuration
+└── README.md                  # Project documentation (this file)
 
 ---
 
