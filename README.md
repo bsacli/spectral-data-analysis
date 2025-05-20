@@ -15,7 +15,6 @@ This Kedro project implements a robust machine learning pipeline to process spec
 │   ├── 02_intermediate/       # Processed data after cleaning, denoising, outlier removal
 │   ├── 03_primary/            # Train/test splits, scaled and PCA-transformed data
 │   ├── 06_models/             # Saved models, scalers, and PCA objects
-│   └── 08_reporting/          # (Optional) Visual outputs, metrics, or plots
 │
 ├── conf/
 │   └── base/
